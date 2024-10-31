@@ -1,0 +1,55 @@
+  190  lsblk
+  191  pvcreate /dev/sdb1
+  192  fdisk /dev/sdb
+  193  lsblk
+  194  pvcreate /dev/sdb1
+  195  pvcreate /dev/sdb2
+  196  pvcreate /dev/sdb3
+  197  vgcreate vggroup /dev/sdb1 /dev/sdb2 /dev/sdb3
+  198  lvcreate -L 1G -n www vggroup
+  199  lvcreate -L 4G -n salvas vggroup
+  200  mkfs.ext4 /dev/datos/www
+  201  mkfs.ext4 /dev/vggroup/www
+  202  mkfs.ext4 /dev/vggroup/salvas
+  203  mkdir /mnt/www
+  204  mkdir /mnt/salvas
+  205  mount /dev/vggroup/www /mnt/www
+  206  mount /dev/vggroup/salvas /mnt/salvas
+  207  vgdisplay vggroup
+  208  lvextend -L 2G /dev/vggroup/www
+  209  touch lvmactivity.txt
+  210  mv lvmactivity.txt history.txt
+  211  nano history.txt
+  212  history
+  213  history > history.txt
+  214  nano history.txt
+  215  history
+  216  history | tail -n 27
+  217  history | tail -n 28
+  218  history | tail -n 29
+  219  history | tail -n 32
+  220  history | tail -n 33
+  221  history | tail -n 32
+  222  history | tail -n 33
+  223  history | tail -n 35
+  224  history | tail -n 35 > history.txt
+  225  nano history.txt
+  226  exit
+  227  fdisk /dev/sdc
+  228  w
+  229  lsblk
+  230  fdisk /dev/sdc
+  231  lsblk
+  232  pvcreate /dev/sdc1
+  233  vgextend vggroup /dev/sdc1
+  234  vgdisplay vggroup
+  235  nano history.txt
+  236  lvextend -L 2G /dev/vggroup/www
+  237  resize2fs /dev/vggroup/www
+  238  e2fsck -f /dev/vggroup/www
+  239  resize2fs /dev/vggroup/www
+  240  lvdisplay
+  241  vgdisplay
+  242  pvdisplay
+  243  history
+  244  history | tail -n 20 >> history.txt
